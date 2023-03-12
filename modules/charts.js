@@ -9,7 +9,7 @@ let modalOpen = false; //indicates open Modal Box
 /**
  * Creates a modal box containing the canvas. 
  * @param {*} id of the canvas
- * @param {*} parent element
+ * @param {*} parent parent element
  * @param {*} width of the canvas
  * @param {*} height of the canvas
  * @returns 
@@ -57,7 +57,7 @@ function createModal(id, parent, width, height) {
  * Appends a pie chart button to the parent element. By clicking, if a single
  * column is selected opens the modal with the canvas, calculates the occurences
  * of the column values (items) and draws the pie chart.
- * @param {*} parent element
+ * @param {*} parent parent element
  * @param {*} canvasId id of the canvas to draw the pie chart in
  * @param {*} id of the chart button
  */

@@ -120,7 +120,7 @@
   padding: 3px 3px; 
   cursor: default;
 }
-.imptBtn { /* hides the import button */
+.imptBtn { /* hides the import buttons */
   display: none;
 }
 .impLabel{ /* replaces the import button - same look as buttons */

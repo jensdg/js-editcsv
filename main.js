@@ -80,7 +80,6 @@ function createTabs(parent, tbNames){
         tabBtn.innerHTML = tbNames[i];
         divTabs.appendChild(tabBtn);
     }
-
 }
 
 

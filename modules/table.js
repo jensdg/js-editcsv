@@ -9,8 +9,8 @@ let editCell;
 let inEdit = false;
 
 /**
- * Takes the array of array of all row cells, creates the table in the needed format and
- * inserts it into the div for the table under the document body.
+ * Takes the array of arrays of all row cells, creates the table in the needed format and
+ * inserts it into the tabels div under the document body.
  * @param {*} allRowCells array of array of row cells
  */
 function insertTable(allRowCells) {
@@ -152,7 +152,7 @@ function spreadSheetSelect(id){
   
   // event listeners on table with event delegation to cells 
   table.addEventListener('mousedown', function(e){
-    if (activeTab != 'Table'){//opens the table tab if table is clicked
+    if (activeTab != 'Table'){//opens the table tab if table is edited
       clickTab('Table');
     }
 
@@ -330,7 +330,7 @@ function spreadSheetSelect(id){
 /**
  * Places the cursor at the end of the text in a html element, i.e. in a table cell.
  * https://stackoverflow.com/a/48299521
- * @param {*} el element
+ * @param {*} el parent element
  */
 function placeCaretAtEnd(el) {
   el.focus();
@@ -378,11 +378,11 @@ function removeSelected(){
 
 
 /**
- * Adds the insert rows button unter the parent element. It will be added either 
- * before the currently selected rows after the last rows of the table 
- * if no rows are selected. The number of the selected rows will will also 
- * be added before the selection. If none is selected one rows is added as the last.   
- * @param {*} parent element
+ * Adds the insert rows button unter the parent element. Will add either 
+ * before the selected rows or if no rows are selected as the last row
+ * of the table. The number of the selected rows will also be added before
+ * the selection. If none is selected one rows is added at the tableend.   
+ * @param {*} parent parent element
  */
 function insertRowsBtn(parent){
   let insertBtn = document.createElement('button');
@@ -419,7 +419,7 @@ function insertRowsBtn(parent){
 /**
  * Adds the delete rows button unter the parent element. By clicking the
  * selected table rows will be deleted.
- * @param {*} parent 
+ * @param {*} parent parent element
  */
 function deletRowsBtn(parent){
   let delRowBtn = document.createElement('button');
@@ -446,7 +446,7 @@ function deletRowsBtn(parent){
 /**
  * Adds the delete columns button unter the parent element.
  * Clicking the button deletes the selected columns.
- * @param {*} parent element
+ * @param {*} parent parent element
  */
 function deletColsBtn(parent){
   let delColBtn = document.createElement('button');
@@ -471,11 +471,11 @@ function deletColsBtn(parent){
 
 
 /**
- * Adds the insert column button under parent. It will be added either 
- * before the currently selected columns after the last column of the table 
- * if no columns are selected. The number of the selected columns will will also 
- * be added before the selection. If none is selected one column is added as the last.   
- * @param {*} parent 
+ * Adds the insert columns button unter the parent element. Will add either 
+ * before the selected columns or if no columns are selected as the last column
+ * of the table. The number of the selected columns will also be added before
+ * the selection. If none is selected one rows is added at the table edge.    
+ * @param {*} parent parent element
  */
 function insertColsBtn(parent){
   let insrtColBtn = document.createElement('button');
@@ -509,7 +509,7 @@ function insertColsBtn(parent){
  * Adds the cut button under the parent element. By clicking the selection will be written
  * to the clipboard in a format that can then be pasted into LibreOffice Calc, Excel 
  * spreadsheets or into the same table. 
- * @param {*} parent element
+ * @param {*} parent parent element
  */
 function cutSelectBtn(parent){
   let cutBtn = document.createElement('button');
@@ -538,7 +538,7 @@ function cutSelectBtn(parent){
  * Adds a 'copy' button under 'parent which copies the selection. 
  * The copied cells can be pasted into LibreOffice Calc, Excel spreadsheets
  * or into the same table.
- * @param {*} parent element
+ * @param {*} parent parent element
  */
 function copySelectBtn(parent){
     let cpyBtn = document.createElement('button');
@@ -595,6 +595,8 @@ function copySel(seltd) {
  * 
  * Does currently not work with Firefox due to the navigator.clipboard is not working
  * with readText().
+ * 
+ * @param {*} parent parent element
  */
 function pasteInTblBtn(parent){
   let pstBtn = document.createElement('button');

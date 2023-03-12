@@ -143,7 +143,7 @@ function ignoreInQuotes(text, separator){
 /**
  * Adds the export CSV button under the parent element. By clicking
  * converts the html table into the CSV format and downloads it as a file.
- * @param {*} parent element
+ * @param {*} parent parent element
  */
 function downloadCSVBtn(parent) {
     // see https://www.geeksforgeeks.org/how-to-export-html-table-to-csv-using-javascript/
