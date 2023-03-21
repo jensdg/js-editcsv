@@ -1,14 +1,27 @@
-import { importCVSBtn, downloadCSVBtn } from './modules/data.js';
+import { importCVSBtn, downloadCSVBtn, imptTblFormat } from './modules/data.js';
 import { createModal, insertChartBtn } from './modules/charts.js';
 import { insertRowsBtn, insertColsBtn, cutSelectBtn, copySelectBtn, pasteInTblBtn, deletRowsBtn, 
-    deletColsBtn } from './modules/table.js';
+    deletColsBtn, insertTable } from './modules/table.js';
+
+// example table/csv to start with
+let startTable = `Hauptartikelnr;Artikelname;Hersteller;Beschreibung;Materialangaben;Geschlecht;Produktart;Ärmel;Bein;Kragen;Herstellung;Taschenart;Grammatur;Material;Ursprungsland;Bildname
+102.85;"Paul - Men's Supersoft Organic T-Shirt";Nakedshirt;"Single Jersey, Rundhalsausschnitt mit Rippstrickbündchen, Nackenband, Seitennähte, Doppelnaht an Ärmelabschluss und Bund, Medium Fit, Neutrales Größenetikett im Nacken ";"100% Bio-Baumwolle ";Herren;T-Shirts;Kurzarm;;Rundhals;"Fair & Umweltfreundlich";;"200 g/m²";Bio-Baumwolle;;102.85.jpg
+110.85;"Mouse - Girl's Fashion T-Shirt";Nakedshirt;"Single Jersey, Rundhalsausschnitt mit Rippstrickkragen,  
+Ärmelabschluss und Bund sind gekräuselt, Seitennähte,  
+Neutrales Größenetikett im Nacken. ";"100 % Baumwolle";Kinder;T-Shirts;Kurzarm;;Rundhals;Fair;;"155 g/m² ";Baumwolle;;110.85.jpg
+105.85;"Coco - Women's Tank Top";Nakedshirt;"Single Jersey Hals- und Armausschnitte mit Rippstrick-Einfassung, 
+Seitennähte, Doppelnaht am Bund, Medium Fit, Neutrales Größenetikett im Nacken. ";"100 % Baumwolle";Damen;T-Shirts;Ärmellos;;Rundhals;Fair;;"155 g/m²";Baumwolle;;105.85.jpg
+BL1080;"Ladies Tank Top";Bella;"gekämmte Baumwolle, taillierter; langer Schnitt; tiefer 
+Rundhals -Ausschnitt / Boat Neck, schmale; fein-gerippte Bündchen (Baby-Ripp), Seitennähte, Mediumweight / mittelschwerer Stoff
+";"100 % Baumwolle";Damen;T-Shirts;Ärmellos;;Boat-Neck;Konventionell;;"195 g/m²";Baumwolle;GT;bl1080.jpg
+ALW2002;"Women´s Mesh Back Sports Bra";"All Sport";"Antimikrobiell, Atmungsaktiver ""Racer-Back"" aus Netzstoff für festen Halt, Optimale Passform durch StretchFlex Technik, Vorne doppellagig, Elasthan knit Jersey";;Damen;T-Shirts;Ärmellos;;Boat-Neck;;;;Polyestergemisch;PH;alw2002.jpg
+A136;"Solid Brushed Twill Cap";Anvil;"Baumwoll-Twill, Sechs Segmente, Knopf und sechs umstickte Luftlöcher, Vorgeformter Schirm mit sechs Nähten, Klemmverschluss mit Messingschnalle und verdecktem Messingringeinschub, Farblich abgestimmtes Schweißband, Unbedruckt maschinenwaschbar, Leicht gebürstet.";"100% Baumwolle";;Caps;;;;Konventionell;;;Baumwolle;KH;a136.jpg`;
 
 let activeTab;//indicates the open tab
 let tabHeaders = ['Data', 'Table', 'Charts'];//tab names
 
 createTabs(document.body, tabHeaders);
 let tabContent = createTabContent(document.body, tabHeaders);//array of tab content divs
-clickTab('Data');//open data tab on start
 
 // create the modal box with canvas for the pie chart
 let canvasInModal = createModal('divCanvas', document.body, 450, 300);
@@ -60,6 +73,10 @@ document.body.appendChild(line_3);
 let line_4 = document.createElement('div');
 line_4.classList.add('line_4');
 document.body.appendChild(line_4);
+
+// insert a start table
+let parsedStartTable = imptTblFormat(startTable, ';');
+insertTable(parsedStartTable);
 
 
 /**

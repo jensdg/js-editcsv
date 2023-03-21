@@ -216,4 +216,4 @@ function downloadFile(csv_data) {
     document.body.removeChild(temp_link);
 }
 
-export { importCVSBtn, downloadCSVBtn, imptTblFormat, ignoreInQuotes };
+export { importCVSBtn, downloadCSVBtn, imptTblFormat, ignoreInQuotes, imptTblFormat };
